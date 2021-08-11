@@ -1,10 +1,12 @@
+from marshmallow import ValidationError
+
 import pytest
 
-from marshmallow import ValidationError
 from sqlalchemy.exc import DataError
 
 from api.models.card import CardModel
 from api.utils.testing import DBTest
+
 
 class TestCardModel(DBTest):
 
@@ -35,7 +37,7 @@ class TestCardModel(DBTest):
         payload['expansion'] = "foo"
         with pytest.raises(DataError):
             self.save(CardModel, payload)
-        
+
     def test_create_card_type_error(self):
         payload = self.card_payload.copy()
         payload['type'] = "foo"

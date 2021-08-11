@@ -1,5 +1,6 @@
 import os
 
+
 class Config(object):
 
     DB_USER = os.environ.get("DB_USER")

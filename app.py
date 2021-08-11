@@ -1,7 +1,8 @@
 from flask import Flask
 
-from api.db import db
 from api.config import Config
+from api.db import db
+
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +15,7 @@ def create_app():
         return "It works!"
 
     return app
+
 
 if __name__ == '__main__':
     app = create_app()
