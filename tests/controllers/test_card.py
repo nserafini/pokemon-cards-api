@@ -86,7 +86,6 @@ class TestCardController(DBTest):
         assert response.json == {"error": f"{random_uuid} not found"}
         assert response.status_code == 404
 
-
     @patch("api.controllers.card.CardService.delete")
     def test_delete_card_success(self, mocked_delete):
         random_uuid = "93fb3b57-1895-4f7b-ab8a-6853de44f606"
@@ -101,5 +100,3 @@ class TestCardController(DBTest):
         response = self.test_client.delete(f"/cards/{random_uuid}")
         assert response.json == {"error": f"{random_uuid} not found"}
         assert response.status_code == 404
-
-
