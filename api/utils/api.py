@@ -1,6 +1,10 @@
+from functools import wraps
+
+from flask import current_app, request
+
 from flask_restful import Api
 
-from api.exceptions import NotFoundError
+from api.exceptions import ApiKeyError, NotFoundError
 
 
 class BaseAPI(Api):
@@ -16,3 +20,20 @@ class BaseAPI(Api):
             response = {"error": str(error)}
             status_code = 500
         return response, status_code
+
+
+def validate_access(method):
+    """Validate Api Key."""
+    @wraps(method)
+    def _impl(*method_args, **method_kwargs):
+
+        headers = request.headers
+        api_key_header = headers.get('Api-Key', None)
+        if api_key_header is None:
+            raise ApiKeyError("No Api Key was provided.")
+
+        if api_key_header != current_app.config.get('API_KEY'):
+            raise ApiKeyError("Invalid Api Key.")
+
+        return method(*method_args, **method_kwargs)
+    return _impl
