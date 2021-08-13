@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class CardExpansion(Enum):
+class CardExpansion(str, Enum):
 
     BASE_SET = "Base Set"
     JUNGLE = "Jungle"
@@ -9,7 +9,7 @@ class CardExpansion(Enum):
     BASE_SET_2 = "Base Set 2"
 
 
-class CardType(Enum):
+class CardType(str, Enum):
 
     WATER = "Water"
     FIRE = "Fire"
@@ -17,7 +17,7 @@ class CardType(Enum):
     ELECTRIC = "Electric"
 
 
-class CardRarity(Enum):
+class CardRarity(str, Enum):
 
     COMMON = "Common"
     UNCOMMON = "Uncommon"

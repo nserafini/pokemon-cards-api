@@ -32,24 +32,15 @@ class CardModel(BaseModel):
 
     @validates('expansion')
     def validate_expansion(self, key, value):
-        try:
-            CardExpansion[value]
-        except KeyError:
-            raise ValueError("Invalid expansion value")
+        CardExpansion(value)
         return value
 
     @validates('type')
     def validate_type(self, key, value):
-        try:
-            CardType[value]
-        except KeyError:
-            raise ValueError("Invalid type value")
+        CardType(value)
         return value
 
     @validates('rarity')
     def validate_rarity(self, key, value):
-        try:
-            CardRarity[value]
-        except KeyError:
-            raise ValueError("Invalid rarity value")
+        CardRarity(value)
         return value

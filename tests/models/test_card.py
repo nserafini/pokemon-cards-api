@@ -12,9 +12,9 @@ class TestCardModel(DBTest):
             "name": "Charizard",
             "hp": 100,
             "first_edition": True,
-            "expansion": "BASE_SET",
-            "type": "FIRE",
-            "rarity": "COMMON",
+            "expansion": "Jungle",
+            "type": "Fire",
+            "rarity": "Common",
             "price": 500,
             "image_filename": "charizard.jpg"
         }

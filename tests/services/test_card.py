@@ -16,9 +16,9 @@ class TestCardService(DBTest):
             "name": "Charizard",
             "hp": 100,
             "first_edition": True,
-            "expansion": "BASE_SET",
-            "type": "FIRE",
-            "rarity": "COMMON",
+            "expansion": "Base Set",
+            "type": "Fire",
+            "rarity": "Common",
             "price": 500,
             "image_filename": "charizard.jpg"
         }
@@ -60,12 +60,12 @@ class TestCardService(DBTest):
         payload_two["name"] = "test"
         CardService.create(payload_two)
 
-        filters = {"type": "FIRE"}
+        filters = {"type": "Fire"}
         response = CardService.get_many(filters)
         assert len(response['cards']) == 2
 
     def test_get_many_cards_error_not_found(self):
-        filters = {"type": "FIRE"}
+        filters = {"type": "Fire"}
         response = CardService.get_many(filters)
         assert len(response['cards']) == 0
 
@@ -88,7 +88,7 @@ class TestCardService(DBTest):
         payload_two["name"] = "test"
         CardService.create(payload_two)
 
-        filters = {"type": "FIRE", "page": "1"}
+        filters = {"type": "Fire", "page": "1"}
         response = CardService.get_many(filters)
 
         assert len(response['cards']) == 2
