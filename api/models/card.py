@@ -17,7 +17,7 @@ class CardModel(BaseModel):
 
     __tablename__ = "cards"
 
-    name = Column(String(128), nullable=False)
+    name = Column(String(128), unique=True, nullable=False)
     hp = Column(Integer, nullable=False)
     first_edition = Column(Boolean, nullable=False)
     expansion = Column(Enum(CardExpansion), nullable=False)
