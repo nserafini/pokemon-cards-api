@@ -1,5 +1,3 @@
-from marshmallow import ValidationError
-
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import Enum
@@ -27,7 +25,31 @@ class CardModel(BaseModel):
     image_filename = Column(String(128), nullable=False)
 
     @validates('hp')
-    def validate_name(self, key, value):
+    def validate_hp(self, key, value):
         if value % 10 != 0:
-            raise ValidationError("HP must be a multiple of 10")
+            raise ValueError("HP must be a multiple of 10")
+        return value
+
+    @validates('expansion')
+    def validate_expansion(self, key, value):
+        try:
+            CardExpansion[value]
+        except KeyError:
+            raise ValueError("Invalid expansion value")
+        return value
+
+    @validates('type')
+    def validate_type(self, key, value):
+        try:
+            CardType[value]
+        except KeyError:
+            raise ValueError("Invalid type value")
+        return value
+
+    @validates('rarity')
+    def validate_rarity(self, key, value):
+        try:
+            CardRarity[value]
+        except KeyError:
+            raise ValueError("Invalid rarity value")
         return value
