@@ -30,7 +30,7 @@ class DBTest(BaseTest):
         cls.db.session.remove()
         cls.db.drop_all()
         cls.db.create_all()
-    
+
     def save(self, model, payload):
         model = model(**payload)
         self.db.session.add(model)

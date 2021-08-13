@@ -1,4 +1,5 @@
 import pytest
+
 from sqlalchemy.exc import (
     IntegrityError,
     InvalidRequestError
@@ -25,7 +26,7 @@ class TestCardService(DBTest):
     def test_create_card_success(self):
         card = CardService.create(self.card_payload)
         assert card
-    
+
     def test_create_card_error_missing_fields(self):
         with pytest.raises(IntegrityError):
             CardService.create({})

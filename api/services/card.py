@@ -1,6 +1,6 @@
 from api.db import db
-from api.models.card import CardModel
 from api.exceptions import NotFoundError
+from api.models.card import CardModel
 
 
 class CardService:
