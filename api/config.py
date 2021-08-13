@@ -1,5 +1,7 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class Config(object):
 
@@ -14,3 +16,10 @@ class Config(object):
         f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+
+class TestConfig(Config):
+
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(
+        basedir, '../tests/test.db'
+    )

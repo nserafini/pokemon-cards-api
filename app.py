@@ -9,11 +9,11 @@ from api.utils.api import BaseAPI
 from api.utils.db import init_db
 
 
-def create_app():
+def create_app(config):
     """Initialize api db."""
 
     app = Flask(__name__)
-    app.config.from_object(Config())
+    app.config.from_object(config)
 
     init_db(app)
 
@@ -29,5 +29,5 @@ def create_app():
 
 
 if __name__ == '__main__':
-    app = create_app()
+    app = create_app(Config())
     app.run(host="0.0.0.0", debug=True)
