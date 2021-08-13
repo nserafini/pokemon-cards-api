@@ -80,20 +80,18 @@ class TestCardService(DBTest):
         with pytest.raises(NotFoundError):
             CardService.delete(random_uuid)
 
-
     def test_get_many_cards_paginated_success(self):
         payload_one = self.card_payload.copy()
-        card_one = CardService.create(payload_one)
+        CardService.create(payload_one)
 
         payload_two = self.card_payload.copy()
         payload_two["name"] = "test"
-        card_two = CardService.create(payload_two)
+        CardService.create(payload_two)
 
         filters = {"type": "FIRE", "page": "1"}
         response = CardService.get_many(filters)
-        assert response == {
-            'cards': [card_two, card_one],
-            'page_number': 1,
-            'page_size': 20,
-            'total_items': 2
-        }
+
+        assert len(response['cards']) == 2
+        assert response['page_number'] == 1
+        assert response['page_size'] == 20
+        assert response['total_items'] == 2
