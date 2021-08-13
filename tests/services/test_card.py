@@ -79,3 +79,21 @@ class TestCardService(DBTest):
         random_uuid = "93fb3b57-1895-4f7b-ab8a-6853de44f606"
         with pytest.raises(NotFoundError):
             CardService.delete(random_uuid)
+
+
+    def test_get_many_cards_paginated_success(self):
+        payload_one = self.card_payload.copy()
+        card_one = CardService.create(payload_one)
+
+        payload_two = self.card_payload.copy()
+        payload_two["name"] = "test"
+        card_two = CardService.create(payload_two)
+
+        filters = {"type": "FIRE", "page": "1"}
+        response = CardService.get_many(filters)
+        assert response == {
+            'cards': [card_two, card_one],
+            'page_number': 1,
+            'page_size': 20,
+            'total_items': 2
+        }

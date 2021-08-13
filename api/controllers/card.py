@@ -20,7 +20,7 @@ class SingleCardController(Resource):
     def get(self):
         """Retrieve many cards by filters."""
 
-        filters = request.args
+        filters = request.args.to_dict()
         CardGetAllRequestSchema().load(filters)
         cards = CardService.get_many(filters)
         return CardGetAllResponseSchema().dump(cards), 200

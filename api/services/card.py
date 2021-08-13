@@ -39,8 +39,21 @@ class CardService:
     def get_many(cls, filters):
         """Retrieves many cards by filters."""
 
-        cards = cls._model.query.filter_by(**filters).all()
-        return {"cards": cards}
+        page_number = int(filters.pop('page', 1))
+        page_size = 20
+
+        cards = cls._model.query.filter_by(**filters).paginate(
+            page=page_number,
+            per_page=page_size,
+            error_out=False
+        )
+
+        return {
+            "cards": cards.items,
+            "page_number": page_number,
+            "page_size": page_size,
+            "total_items": cards.total
+        }
 
     @classmethod
     def delete(cls, card_id):

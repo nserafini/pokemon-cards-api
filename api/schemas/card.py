@@ -32,6 +32,9 @@ class CardGetAllResponseSchema(Schema):
     """Schema to get all cards response."""
 
     cards = fields.Nested(CardGetOneResponseSchema, many=True)
+    page_number = fields.Integer()
+    page_size = fields.Integer()
+    total_items = fields.Integer()
 
 
 class CardGetAllRequestSchema(Schema):
@@ -45,6 +48,7 @@ class CardGetAllRequestSchema(Schema):
     rarity = fields.Str()
     price = fields.Integer()
     image_filename = fields.Str()
+    page = fields.Integer()
 
 
 class CardCreateRequestSchema(Schema):
