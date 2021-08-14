@@ -1,0 +1,474 @@
+{
+    "definitions": {
+        "CreateRequest": {
+            "properties": {
+                "expansion": {
+                    "example": "Base Set",
+                    "type": "string"
+                },
+                "first_edition": {
+                    "example": true,
+                    "type": "boolean"
+                },
+                "hp": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "image_filename": {
+                    "example": "charizard.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Charizard",
+                    "type": "string"
+                },
+                "price": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "rarity": {
+                    "example": "Common",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "Fire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CreateResponse": {
+            "properties": {
+                "creation_date": {
+                    "example": "2021-08-14 02:29:04",
+                    "type": "string"
+                },
+                "expansion": {
+                    "example": "Base Set",
+                    "type": "string"
+                },
+                "first_edition": {
+                    "example": true,
+                    "type": "boolean"
+                },
+                "hp": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "id": {
+                    "example": "96e79a65-7bdd-42b3-87bd-b37d5479e867",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "charizard.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Charizard",
+                    "type": "string"
+                },
+                "price": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "rarity": {
+                    "example": "Common",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "Fire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetOneResponse": {
+            "properties": {
+                "creation_date": {
+                    "example": "2021-08-14 02:29:04",
+                    "type": "string"
+                },
+                "expansion": {
+                    "example": "Base Set",
+                    "type": "string"
+                },
+                "first_edition": {
+                    "example": true,
+                    "type": "boolean"
+                },
+                "hp": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "id": {
+                    "example": "96e79a65-7bdd-42b3-87bd-b37d5479e867",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "charizard.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Charizard",
+                    "type": "string"
+                },
+                "price": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "rarity": {
+                    "example": "Common",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "Fire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetAllResponse": {
+            "properties": {
+                "cards": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "schema": {
+                                "$ref": "#/definitions/GetOneResponse"
+                            }
+                        }
+                    }
+                },
+                "total_items": {
+                    "example": 5,
+                    "type": "integer"
+                },
+                "page_number": {
+                    "example": 1,
+                    "type": "integer"
+                },
+                "page_size": {
+                    "example": 20,
+                    "type": "integer"
+                }
+            }
+        },
+        "NotFoundResponse": {
+            "properties": {
+                "error": {
+                    "example": "96e79a65-7bdd-42b3-87bd-b37d5479e867 not found",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UnauthorizedResponse": {
+            "properties": {
+                "error": {
+                    "example": "No Api Key was provided.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateRequest": {
+            "properties": {
+                "expansion": {
+                    "example": "Base Set",
+                    "type": "string"
+                },
+                "first_edition": {
+                    "example": true,
+                    "type": "boolean"
+                },
+                "hp": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "image_filename": {
+                    "example": "charizard.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Charizard",
+                    "type": "string"
+                },
+                "price": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "rarity": {
+                    "example": "Common",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "Fire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateResponse": {
+            "properties": {
+                "creation_date": {
+                    "example": "2021-08-14 02:29:04",
+                    "type": "string"
+                },
+                "expansion": {
+                    "example": "Base Set",
+                    "type": "string"
+                },
+                "first_edition": {
+                    "example": true,
+                    "type": "boolean"
+                },
+                "hp": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "id": {
+                    "example": "96e79a65-7bdd-42b3-87bd-b37d5479e867",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "charizard.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Charizard",
+                    "type": "string"
+                },
+                "price": {
+                    "example": 100,
+                    "type": "integer"
+                },
+                "rarity": {
+                    "example": "Common",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "Fire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "info": {
+        "description": "API for Pokemon Cards",
+        "title": "Pokemon Cards API",
+        "version": "1.0.0"
+    },
+    "openapi": "2.0.0",
+    "paths": {
+        "/cards": {
+            "get": {
+                "parameters": [
+                    {
+                        "example": "Charizard",
+                        "in": "query",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "example": 100,
+                        "in": "query",
+                        "name": "hp",
+                        "type": "integer"
+                    },
+                    {
+                        "example": true,
+                        "in": "query",
+                        "name": "first_edition",
+                        "type": "boolean"
+                    },
+                    {
+                        "example": "Base Set",
+                        "in": "query",
+                        "name": "expansion",
+                        "type": "string"
+                    },
+                    {
+                        "example": "Fire",
+                        "in": "query",
+                        "name": "type",
+                        "type": "string"
+                    },
+                    {
+                        "example": "Common",
+                        "in": "query",
+                        "name": "rarity",
+                        "type": "string"
+                    },
+                    {
+                        "example": 100,
+                        "in": "query",
+                        "name": "price",
+                        "type": "integer"
+                    },
+                    {
+                        "example": "charizard.jpg",
+                        "in": "query",
+                        "name": "image_filename",
+                        "type": "string"
+                    },
+                    {
+                        "example": 1,
+                        "in": "query",
+                        "name": "page",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of cards",
+                        "schema": {
+                            "$ref": "#/definitions/GetAllResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve all cards by filters"
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success card created",
+                        "schema": {
+                            "$ref": "#/definitions/CreateResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    }
+                },
+                "summary": "Create a card"
+            }
+        },
+        "/cards/{card_id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "card_id"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Card deleted"
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Card not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Delete a card by id"
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "card_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/GetOneResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve a card by id"
+            },
+            "patch": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "card_id"
+                    },
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Card updated",
+                        "schema": {
+                            "$ref": "#/definitions/UpdateResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Card not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Update a card by id"
+            }
+        }
+    },
+    "security": [
+        {
+            "ApiKey": []
+        }
+    ],
+    "securityDefinitions": {
+        "ApiKey": {
+            "in": "header",
+            "name": "Api-Key",
+            "type": "apiKey"
+        }
+    },
+    "swagger": "2.0"
+}

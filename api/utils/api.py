@@ -1,7 +1,10 @@
+import json
+import os
 from functools import wraps
 
 from flask import current_app, request
 
+from flasgger import Swagger
 from flask_restful import Api
 
 from api.exceptions import ApiKeyError, NotFoundError
@@ -16,14 +19,26 @@ class BaseAPI(Api):
         except NotFoundError as error:
             response = {"error": str(error)}
             status_code = 404
+        except ApiKeyError as error:
+            response = {"error": str(error)}
+            status_code = 401
         except Exception as error:
             response = {"error": str(error)}
             status_code = 500
         return response, status_code
 
 
+def swagger_config(app):
+    """Add swagger documentation."""
+
+    file = open(os.path.join(os.getcwd(), 'api/swagger.json'))
+    swagger_template = json.load(file)
+    Swagger(app, template=swagger_template)
+
+
 def validate_access(method):
     """Validate Api Key."""
+
     @wraps(method)
     def _impl(*method_args, **method_kwargs):
 

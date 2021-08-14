@@ -31,3 +31,4 @@ toml==0.10.2
 webargs==8.0.0
 Werkzeug==0.16.1
 marshmallow-enum==1.5.1
+flasgger==0.9.5
