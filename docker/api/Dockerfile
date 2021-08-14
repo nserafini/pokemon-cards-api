@@ -17,4 +17,4 @@ WORKDIR /app
 ARG requirements=/app/requirements.txt
 RUN pip install -r ${requirements}
 
-CMD ["python app.py"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "-t", "120", "wsgi"]
