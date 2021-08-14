@@ -2,9 +2,10 @@ import json
 import os
 from functools import wraps
 
+from flasgger import Swagger
+
 from flask import current_app, request
 
-from flasgger import Swagger
 from flask_restful import Api
 
 from api.exceptions import ApiKeyError, NotFoundError
