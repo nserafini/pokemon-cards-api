@@ -3,6 +3,7 @@ from marshmallow import (
     fields,
     post_load
 )
+from marshmallow.validate import Range
 
 from marshmallow_enum import EnumField
 
@@ -55,13 +56,19 @@ class CardCreateRequestSchema(Schema):
     """Schema to create card request."""
 
     name = fields.Str(required=True)
-    hp = fields.Integer(required=True)
+    hp = fields.Integer(required=True, validate=[
+        Range(min=0, error="min value: 0"),
+        Range(max=100, error="max value: 100")
+    ])
     first_edition = fields.Boolean(required=True)
     expansion = EnumField(
         CardExpansion, load_by=EnumField.VALUE, required=True)
     type = EnumField(CardType, load_by=EnumField.VALUE, required=True)
     rarity = EnumField(CardRarity, load_by=EnumField.VALUE, required=True)
-    price = fields.Integer(required=True)
+    price = fields.Integer(required=True, validate=[
+        Range(min=0, error="min value: 0"),
+        Range(max=1000, error="max value: 1000")
+    ])
     image_filename = fields.Str(required=True)
 
     @post_load
@@ -76,12 +83,18 @@ class CardUpdateRequestSchema(Schema):
     """Schema to update card request."""
 
     name = fields.Str()
-    hp = fields.Integer()
+    hp = fields.Integer(validate=[
+        Range(min=0, error="min value: 0"),
+        Range(max=100, error="max value: 100")
+    ])
     first_edition = fields.Boolean()
     expansion = EnumField(CardExpansion, load_by=EnumField.VALUE)
     type = EnumField(CardType, load_by=EnumField.VALUE)
     rarity = EnumField(CardRarity, load_by=EnumField.VALUE)
-    price = fields.Integer()
+    price = fields.Integer(validate=[
+        Range(min=0, error="min value: 0"),
+        Range(max=1000, error="max value: 1000")
+    ])
     image_filename = fields.Str()
 
     @post_load
