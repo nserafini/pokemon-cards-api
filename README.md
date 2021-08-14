@@ -9,6 +9,9 @@
 - Build: `docker build . -f docker/api/Dockerfile --no-cache -t api`
 - Run: `docker run --env-file <env-file> -d -p 5000:5000 --name pokemon-cards api`
 
+## Swagger docs
+- /apidocs
+
 ## Required Environment Variables
 - API_KEY
 - DB_USER
